@@ -26,8 +26,14 @@ class TestInterpolateMatrix(unittest.TestCase):
             self.input_test_data_1), self.interpolated_test_data_1)
 
     # north south east west
+    """
+    37.454012,95.071431,73.199394,59.865848,nan
+    15.599452,5.808361,86.617615,60.111501,70.807258
+
+    65.336553
+    """
     def test_interpolate_none_none_70p807258_59p865848(self):
-        self.assertEqual(interpolate_element(None, None, 70.807258, 59.865848), 65.336553)
+        self.assertEqual(interpolate_element([None, None, 70.807258, 59.865848]), 65.336553)
 
     """
     15.599452,5.808361,86.617615,60.111501,70.807258
@@ -37,7 +43,7 @@ class TestInterpolateMatrix(unittest.TestCase):
     64.3295385
     """
     def test_interpolate_86p617615_21p233911_52p475643_96p990985(self):
-        self.assertEqual(interpolate_element(86.617615, 21.233911, 52.475643, 59.865848), 64.3295385)
+        self.assertEqual(interpolate_element([86.617615, 21.233911, 52.475643, 59.865848]), 64.3295385)
 
     """
     2.058449,96.990985,nan,21.233911,18.182497
@@ -47,14 +53,14 @@ class TestInterpolateMatrix(unittest.TestCase):
     31.222654
     """
     def test_interpolate_2p058449_30p424224_61p185289_None(self):
-        self.assertEqual(interpolate_element(2.058449, 30.424224, 61.185289, None), 31.222654)
+        self.assertEqual(interpolate_element([2.058449, 30.424224, 61.185289, None]), 31.222654)
 
     """
     nan,30.424224,52.475643,43.194502,29.122914
     61.185289,13.949386,29.214465,nan,45.606998
     """
     def test_interpolate_43p194502_45p606998_None_29p214465(self):
-        self.assertEqual(interpolate_element(43.194502, 45.606998, None, 29.214465), 39.338655)
+        self.assertEqual(interpolate_element([43.194502, 45.606998, None, 29.214465]), 39.338655)
 
 if __name__ == '__main__':
     unittest.main()
