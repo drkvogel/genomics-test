@@ -43,7 +43,7 @@ class TestInterpolateMatrix(unittest.TestCase):
     64.3295385
     """
     def test_interpolate_86p617615_21p233911_52p475643_96p990985(self):
-        self.assertEqual(interpolate_element([86.617615, 21.233911, 52.475643, 59.865848]), 64.3295385)
+        self.assertEqual(interpolate_element([86.617615, 21.233911, 52.475643, 96.990985]), 64.3295385)
 
     """
     2.058449,96.990985,nan,21.233911,18.182497
