@@ -1,7 +1,7 @@
 import unittest
 import csv
 from interpolate_matrix import interpolated_matrix, interpolate_element
-
+from decimal import *
 
 class TestInterpolateMatrix(unittest.TestCase):
 
@@ -19,6 +19,8 @@ class TestInterpolateMatrix(unittest.TestCase):
             for row in reader:
                 self.interpolated_test_data_1.append(
                     [row[0], row[1], row[2], row[3], row[4]])
+
+        # getcontext().prec = 8
 
     # acceptance/integration test
     def test_interpolate_input_test_data_1(self):
@@ -38,7 +40,7 @@ class TestInterpolateMatrix(unittest.TestCase):
     65.33655300000001
     """
     def test_interpolate_none_none_70p807258_59p865848(self):
-        self.assertEqual(interpolate_element([None, None, 70.807258, 59.865848]), 65.336553)
+        self.assertEqual(interpolate_element([None, None, Decimal('70.807258'), Decimal('59.865848')]), Decimal('65.336553'))
         # FIXME rounding error in calculation of mean produces slightly incorrect value
         # so round the output?
         # self.assertEqual(round(interpolate_element([None, None, 70.807258, 59.865848]), 6), 65.336553)
@@ -55,7 +57,7 @@ class TestInterpolateMatrix(unittest.TestCase):
     64.3295385
     """
     def test_interpolate_86p617615_21p233911_52p475643_96p990985(self):
-        self.assertEqual(interpolate_element([86.617615, 21.233911, 52.475643, 96.990985]), 64.3295385)
+        self.assertEqual(interpolate_element([Decimal('86.617615'), Decimal('21.233911'), Decimal('52.475643'), Decimal('96.990985')]), Decimal('64.3295385'))
         # self.assertEqual(interpolate_element([86.617615, 21.233911, 52.475643, 96.990985]), 64.329538)
             # FIXME expected output is 64.3295385 (7 decimal places) but function returns 64.329538 (6 decimal parts)
 
@@ -71,7 +73,8 @@ class TestInterpolateMatrix(unittest.TestCase):
     31.222654
     """
     def test_interpolate_2p058449_30p424224_61p185289_None(self):
-        self.assertEqual(interpolate_element([2.058449, 30.424224, 61.185289, None]), 31.222654)
+        # self.assertEqual(interpolate_element([2.058449, 30.424224, 61.185289, None]), 31.222654)
+        self.assertEqual(interpolate_element([Decimal('2.058449'), Decimal('30.424224'), Decimal('61.185289'), None]), Decimal('31.222654'))
 
     """
     given:
@@ -84,7 +87,7 @@ class TestInterpolateMatrix(unittest.TestCase):
     39.338655
     """
     def test_interpolate_43p194502_45p606998_None_29p214465(self):
-        self.assertEqual(interpolate_element([43.194502, 45.606998, None, 29.214465]), 39.338655)
+        self.assertEqual(interpolate_element([Decimal('43.194502'), Decimal('45.606998'), None, Decimal('29.214465')]), Decimal('39.338655'))
 
 if __name__ == '__main__':
     unittest.main()
