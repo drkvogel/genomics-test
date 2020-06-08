@@ -10,15 +10,14 @@ class TestInterpolateMatrix(unittest.TestCase):
         with open('./example_data/input_test_data.csv') as f:
             reader = csv.reader(f)
             for row in reader:
-                self.input_test_data_1.append(
-                    [row[0], row[1], row[2], row[3], row[4]])
+                # self.input_test_data_1.append([row[0], row[1], row[2], row[3], row[4]])
+                self.input_test_data_1.append(row)
 
         self.interpolated_test_data_1 = []
         with open('./example_data/interpolated_test_data.csv') as f:
             reader = csv.reader(f)
             for row in reader:
-                self.interpolated_test_data_1.append(
-                    [row[0], row[1], row[2], row[3], row[4]])
+                self.interpolated_test_data_1.append(row)
 
         # getcontext().prec = 8
 

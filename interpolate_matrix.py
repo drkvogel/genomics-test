@@ -12,7 +12,7 @@ def interpolated_matrix(matrix):
     
     h = len(matrix)
     w = len(matrix[0])
-    print(f'\nh: {h}, w: {w}')
+    # print(f'\nh: {h}, w: {w}')
     # getcontext().prec = 8
 
     for y, row in enumerate(matrix):
